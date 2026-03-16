@@ -13,7 +13,7 @@ export default function UploadZone({ onFileAccepted, disabled }: UploadZoneProps
   const [error, setError] = useState<string | null>(null);
 
   const onDrop = useCallback(
-    (accepted: File[], rejected: { errors: { message: string }[] }[]) => {
+    (accepted: File[], rejected: readonly unknown[]) => {
       setError(null);
       if (rejected.length > 0) {
         setError("Only PDF files are accepted.");
