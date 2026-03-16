@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: var(--font-bitter);
+  --font-mono:  var(--font-ibm-plex-mono);
+}
+
+body {
+  font-family: var(--font-bitter), Georgia, serif;
+}
+
+.font-serif {
+  font-family: var(--font-bitter), Georgia, serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
