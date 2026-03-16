@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Bitter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+
 
 const bitter = Bitter({
   subsets: ["latin"],
