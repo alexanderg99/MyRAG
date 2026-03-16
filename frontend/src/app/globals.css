@@ -1,14 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --font-serif: var(--font-bitter);
-  --font-mono:  var(--font-ibm-plex-mono);
+  --font-mono: var(--font-ibm-plex-mono);
+  --amber: #d4944c;
+  --amber-light: #e0a55d;
+  --amber-dim: rgba(212, 148, 76, 0.08);
+  --amber-border: rgba(212, 148, 76, 0.3);
 }
 
 body {
-  font-family: var(--font-bitter), Georgia, serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .font-serif {
@@ -19,8 +21,32 @@ body {
   font-family: var(--font-mono), "Courier New", monospace;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar       { width: 4px; }
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* Citation badge */
+.cite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-mono), monospace;
+  cursor: pointer;
+  transition: all 0.15s;
+  vertical-align: middle;
+  margin: 0 1px;
+}
+.cite:hover {
+  background: #3b82f6;
+  color: white;
+}

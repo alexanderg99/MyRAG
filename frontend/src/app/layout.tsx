@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Bitter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const bitter = Bitter({
   subsets: ["latin"],
@@ -18,9 +18,37 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Librarian — Local RAG",
-  description: "Chat with your documents using a fully local RAG pipeline.",
+  title: "Librarian — RAG + Agentic AI",
+  description: "Research your documents with hybrid search, query decomposition, and source-cited answers.",
 };
+
+function Nav() {
+  return (
+    <header className="border-b border-slate-800/80 px-5 py-3 flex items-center justify-between bg-slate-900/95 backdrop-blur-sm sticky top-0 z-50">
+      <Link href="/" className="flex items-center gap-2 group">
+        <span className="text-amber-400 text-lg">◈</span>
+        <span className="font-serif text-[15px] font-medium tracking-tight text-slate-100">
+          Librarian
+        </span>
+      </Link>
+
+      <nav className="flex items-center gap-5 text-xs font-mono">
+        <Link
+          href="/upload"
+          className="text-slate-500 hover:text-amber-400 transition-colors"
+        >
+          Upload
+        </Link>
+        <Link
+          href="/chat"
+          className="text-slate-500 hover:text-amber-400 transition-colors"
+        >
+          Chat
+        </Link>
+      </nav>
+    </header>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -30,36 +58,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bitter.variable} ${ibmPlexMono.variable}`}>
       <body className="bg-slate-900 text-slate-200 min-h-screen antialiased">
-
-        {/* Nav */}
-        <header className="border-b border-slate-800 px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <BookOpen className="w-5 h-5 text-amber-400 group-hover:text-amber-300 transition-colors" />
-            <span className="font-serif text-lg tracking-tight text-slate-100">
-              Librarian
-            </span>
-          </Link>
-
-          <nav className="flex items-center gap-6 text-sm font-mono">
-            <Link
-              href="/upload"
-              className="text-slate-400 hover:text-amber-400 transition-colors"
-            >
-              Upload
-            </Link>
-            <Link
-              href="/chat"
-              className="text-slate-400 hover:text-amber-400 transition-colors"
-            >
-              Chat
-            </Link>
-          </nav>
-        </header>
-
-        <main className="max-w-4xl mx-auto px-6 py-10">
-          {children}
-        </main>
-
+        <Nav />
+        {children}
       </body>
     </html>
   );
