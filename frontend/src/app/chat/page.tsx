@@ -134,7 +134,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     fetchDocuments()
-      .then((docs) => setDocCount(docs.length))
+      .then((docs) => setDocCount(Array.isArray(docs) ? docs.length : 0))
       .catch(() => setDocCount(0));
   }, []);
 

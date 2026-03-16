@@ -31,7 +31,9 @@ export default function UploadPage() {
   const busy = stage === "uploading" || stage === "ingesting";
 
   useEffect(() => {
-    fetchDocuments().then(setDocuments).catch(() => {});
+    fetchDocuments()
+      .then((docs) => setDocuments(Array.isArray(docs) ? docs : []))
+      .catch(() => setDocuments([]));
   }, [stage]);
 
   const onDrop = useCallback(
