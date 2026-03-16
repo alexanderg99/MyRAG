@@ -1,8 +1,7 @@
 import type { ProgressMessage } from "@/types";
 
-const WS_BASE = typeof window !== "undefined"
-  ? `ws://${window.location.hostname}:8000`
-  : "ws://localhost:8000";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const WS_BASE = API_BASE.replace(/^http/, "ws");
 
 export type ProgressHandler = (msg: ProgressMessage) => void;
 export type ErrorHandler = (err: Event) => void;
